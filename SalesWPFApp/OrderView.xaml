@@ -1,0 +1,158 @@
+﻿<Window x:Class="SalesWPFApp.OrderView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        mc:Ignorable="d"
+        Title="OrderView"
+        Height="723"
+        Width="1197">
+
+    <Window.Resources>
+        <local:OrderConverter x:Key="Converter" />
+    </Window.Resources>
+
+    <StackPanel Margin="885,0,56,0">
+        <Grid>
+            <ListView x:Name="lvOrder"
+                      ItemsSource="{Binding Orders}"
+                      Margin="-887,8,327,-8">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding OrderId}"
+                                        Width="100">
+                            <GridViewColumn.Header>OrderId</GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding MemberId}"
+                                        Width="100">
+                            <GridViewColumn.Header>MemberId</GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding OrderDate}"
+                                        Width="150">
+                            <GridViewColumn.Header>OrderDate</GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding RequiredDate}"
+                                        Width="150">
+                            <GridViewColumn.Header>RequiredDate</GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding ShippedDate}"
+                                        Width="150">
+                            <GridViewColumn.Header>ShippedDate</GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Freight}"
+                                        Width="100">
+                            <GridViewColumn.Header>Freight</GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Label>Order Id</Label>
+        <TextBox Name="txtOrderId"
+                 IsReadOnly="True"
+                 Text="{Binding Path=OrderId, Mode=OneWay}"
+                 DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"></TextBox>
+        <Label>Member Id</Label>
+        <TextBox Name="txtMemberId"
+                 Text="{Binding Path=MemberId, Mode=OneWay}"
+                 DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"></TextBox>
+        <Label>Order Date</Label>
+        <DatePicker Name="dpOrderDate"
+                    SelectedDate="{Binding Path=OrderDate, Mode=OneWay}"
+                    DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"></DatePicker>
+        <Label>Required Date</Label>
+        <DatePicker Name="dpRequiredDate"
+                    SelectedDate="{Binding Path=RequiredDate, Mode=OneWay}"
+                    DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"></DatePicker>
+        <Label>Shipped Date</Label>
+        <DatePicker Name="dpShippedDate"
+                    SelectedDate="{Binding Path=ShippedDate, Mode=OneWay}"
+                    DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"></DatePicker>
+        <Label>Freight</Label>
+        <TextBox Name="txtFreight"
+                 Text="{Binding Path=Freight, Mode=OneWay}"
+                 DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"></TextBox>
+        
+        <Button Name="btnAdd"
+                Content="Add"
+                Command="{Binding AddCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource Converter}">
+                    <Binding Path="Text"
+                             ElementName="txtOrderId" />
+                    <Binding Path="Text"
+                             ElementName="txtMemberId" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpOrderDate" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpRequiredDate" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpShippedDate" />
+                    <Binding Path="Text"
+                             ElementName="txtFreight" />
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+        <Button Name="btnUpdate"
+                Content="Update"
+                Command="{Binding UpdateCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource Converter}">
+                    <Binding Path="Text"
+                             ElementName="txtOrderId" />
+                    <Binding Path="Text"
+                             ElementName="txtMemberId" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpOrderDate" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpRequiredDate" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpShippedDate" />
+                    <Binding Path="Text"
+                             ElementName="txtFreight" />
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+        <Button Name="btnDelete"
+                Content="Delete"
+                Command="{Binding DeleteCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource Converter}">
+                    <Binding Path="Text"
+                             ElementName="txtOrderId" />
+                    <Binding Path="Text"
+                             ElementName="txtMemberId" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpOrderDate" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpRequiredDate" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpShippedDate" />
+                    <Binding Path="Text"
+                             ElementName="txtFreight" />
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+        <Button Name="btnDetail"
+                Content="Order Detail"
+                Command="{Binding DetailCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource Converter}">
+                    <Binding Path="Text"
+                             ElementName="txtOrderId" />
+                    <Binding Path="Text"
+                             ElementName="txtMemberId" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpOrderDate" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpRequiredDate" />
+                    <Binding Path="SelectedDate"
+                             ElementName="dpShippedDate" />
+                    <Binding Path="Text"
+                             ElementName="txtFreight" />
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+    </StackPanel>
+</Window>

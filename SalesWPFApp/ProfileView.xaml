@@ -1,0 +1,56 @@
+﻿<Window x:Class="SalesWPFApp.ProfileView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        mc:Ignorable="d"
+        Title="ProfileView"
+        Height="450"
+        Width="500">
+    <Window.Resources>
+        <local:MemberConverter x:Key="Converter" />
+    </Window.Resources>
+    <StackPanel Margin="100,0,100,0">
+
+        <Label Content="Id" />
+        <TextBox x:Name="txtMemberId" IsReadOnly="True"
+                 Text="{Binding MemberId, Mode=OneWay}"
+                 DataContext="{Binding Member}" />
+        <Label Content="Email" />
+        <TextBox x:Name="txtMemberEmail"
+                 Text="{Binding Email, Mode=OneWay}"
+                 DataContext="{Binding Member}" />
+        <Label Content="Company" />
+        <TextBox x:Name="txtCompanyname"
+                 Text="{Binding CompanyName, Mode=OneWay}"
+                 DataContext="{Binding Member}" />
+        <Label Content="City" />
+        <TextBox x:Name="City"
+                 Text="{Binding City, Mode=OneWay}"
+                 DataContext="{Binding Member}" />
+        <Label Content="Country" />
+        <TextBox x:Name="Country"
+                 Text="{Binding Country, Mode=OneWay}"
+                 DataContext="{Binding Member}" />
+
+        <Button Content="Update"
+                Width="50"
+                Command="{Binding UpdateCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource Converter}">
+                    <Binding Path="Text"
+                             ElementName="txtMemberId" />
+                    <Binding Path="Text"
+                             ElementName="txtMemberEmail" />
+                    <Binding Path="Text"
+                             ElementName="txtCompanyname" />
+                    <Binding Path="Text"
+                             ElementName="City" />
+                    <Binding Path="Text"
+                             ElementName="Country" />
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+    </StackPanel>
+</Window>
