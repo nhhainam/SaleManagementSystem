@@ -50,7 +50,6 @@
         </Grid>
         <Label>Product Id</Label>
         <TextBox Name="txtProductId"
-                 IsReadOnly="True"
                  Text="{Binding Path=ProductId, Mode=OneWay}"
                  DataContext="{Binding ElementName=lvProduct, Path=SelectedItem}"></TextBox>
         <Label>Category Id</Label>

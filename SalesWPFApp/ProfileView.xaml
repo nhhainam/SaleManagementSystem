@@ -15,23 +15,23 @@
 
         <Label Content="Id" />
         <TextBox x:Name="txtMemberId" IsReadOnly="True"
-                 Text="{Binding MemberId, Mode=OneWay}"
+                 Text="{Binding MemberId, Mode=TwoWay}"
                  DataContext="{Binding Member}" />
         <Label Content="Email" />
         <TextBox x:Name="txtMemberEmail"
-                 Text="{Binding Email, Mode=OneWay}"
+                 Text="{Binding Email, Mode=TwoWay}"
                  DataContext="{Binding Member}" />
         <Label Content="Company" />
         <TextBox x:Name="txtCompanyname"
-                 Text="{Binding CompanyName, Mode=OneWay}"
+                 Text="{Binding CompanyName, Mode=TwoWay}"
                  DataContext="{Binding Member}" />
         <Label Content="City" />
         <TextBox x:Name="City"
-                 Text="{Binding City, Mode=OneWay}"
+                 Text="{Binding City, Mode=TwoWay}"
                  DataContext="{Binding Member}" />
         <Label Content="Country" />
         <TextBox x:Name="Country"
-                 Text="{Binding Country, Mode=OneWay}"
+                 Text="{Binding Country, Mode=TwoWay}"
                  DataContext="{Binding Member}" />
 
         <Button Content="Update"

@@ -28,5 +28,6 @@ namespace SalesWPFApp
             InitializeComponent();
             this.DataContext = new MemberViewModel();
         }
+
     }
 }

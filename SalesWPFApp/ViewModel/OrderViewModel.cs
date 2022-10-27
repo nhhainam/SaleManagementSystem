@@ -58,14 +58,14 @@ namespace DataAccess.ViewModel
             );
             DetailCommand = new RelayCommand<OrderObject>(
                 (o) => true, // CanExecute()
-                (o) => seeDetail(o) // Execute()
+                (o) => seeDetail(o, memberObject) // Execute()
             );
         }
 
-        private void seeDetail(OrderObject o)
+        private void seeDetail(OrderObject o, MemberObject memberObject)
         {
-            OrderDetailView wdOrderDetail = new OrderDetailView(o);
-            wdOrderDetail.ShowDialog();
+            OrderDetailView orderDetailView = new OrderDetailView(o, memberObject);
+            orderDetailView.ShowDialog();
         }
 
         private void updateOrder(Order order)

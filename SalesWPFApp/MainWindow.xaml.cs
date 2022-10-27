@@ -34,6 +34,9 @@ namespace SalesWPFApp
             {
                 btnMember.Visibility = Visibility.Collapsed;
                 btnProduct.Visibility = Visibility.Collapsed;
+                btnOrder.Content = "My Orders";
+                btnOrder.Margin = new Thickness(75, 22, 0, 0);
+                btnProfile.Margin = new Thickness(76, 129, 0, 0);
             }
             memberObj = member;
             this.DataContext = member;

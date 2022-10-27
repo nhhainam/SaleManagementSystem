@@ -50,7 +50,6 @@
 
         <Label>Order Id</Label>
         <TextBox Name="txtOrderId"
-                 IsReadOnly="True"
                  Text="{Binding Path=OrderId, Mode=OneWay}"
                  DataContext="{Binding ElementName=lvOrderDetail, Path=SelectedItem}"></TextBox>
         <Label>Product Id</Label>

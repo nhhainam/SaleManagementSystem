@@ -21,10 +21,10 @@ namespace SalesWPFApp
     /// </summary>
     public partial class OrderDetailView : Window
     {
-        public OrderDetailView(OrderObject o)
+        public OrderDetailView(OrderObject o, MemberObject memberObject)
         {
             InitializeComponent();
-            if(o.MemberId != 0)
+            if(memberObject.MemberId != 0)
             {
                 btnAdd.Visibility = Visibility.Collapsed;
                 btnDelete.Visibility = Visibility.Collapsed;
